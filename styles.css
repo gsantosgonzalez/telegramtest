@@ -1,0 +1,49 @@
+.feedback{
+	background-color: red;
+	display: none;
+	min-width: 380px;
+	width: 40%;
+	padding: .5rem 1rem;
+}
+
+.lista{
+	margin-bottom: 25px;
+	overflow: scroll;
+	padding: 1rem;
+}
+
+.lista .message:nth-child(even){
+	background-color: #ccc;
+}
+
+.lista > li{
+	margin-bottom: .5rem;
+}
+
+.messages{
+	height: 750px;
+	min-width: 380px;
+	padding: 1rem;
+	width: 40%;
+}
+
+.message{
+	padding: 1rem;
+}
+
+.sendMessage{
+	display: flex;
+	min-width: 380px;
+	width: 40%;
+}
+
+.sendMessage input{
+	border: 1px solid lightblue;
+	flex: 1 auto;
+	padding: .5rem 1rem;
+}
+
+.wrapper{
+	height: 700px;
+	width: 80%;
+}
