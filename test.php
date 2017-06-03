@@ -7,6 +7,13 @@
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+	<?php 
+		date_default_timezone_set("America/Mexico_City"); 
+		echo ceil(time()/(60*60*24*12*365))+5;
+		echo " : ";
+		echo ceil(time()/(100*60*60*24*12*365));
+		echo "<br>"; 
+	?>
 	<div class="wrapper">
 		<div class="feedback"></div>
 		<div class="messages">

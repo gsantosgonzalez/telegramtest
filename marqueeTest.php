@@ -1,4 +1,3 @@
-<?php include('txts.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,14 +14,13 @@
 	</style>
 </head>
 <body>
-	<!-- <div class='marquee' data-duration='5000' data-gap='10' data-duplicated='true' > -->
-		<? get_alerts(); ?>
-	<!-- </div> -->
-	<button class ="btn" value = "contenido 1">Contenido 1</button>
-	<button class ="btn" value = "contenido 2">Contenido 2</button>
-	<button class ="btn" value = "contenido 3">Contenido 3</button>
-	<button class ="btn" value = "contenido 4">Contenido 4</button>
-	<button class ="btn" value = "contenido 5">Contenido 5</button>
+	<div class="alerts">
+	</div>
+		
+	<button class ="btn" value = "coahuila">Coahuila</button>
+	<button class ="btn" value = "veracruz">Veracruz</button>
+	<button class ="btn" value = "edomex">Estado de México</button>
+	<button class ="btn" value = "nayarit">Nayarit</button>
 	<script	src="https://code.jquery.com/jquery-3.2.1.js"
 		integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
 		crossorigin="anonymous">
@@ -31,18 +29,30 @@
 		type="text/javascript">
 	</script>
 	<script>
-		$('.marquee').marquee({duration:10000, gap: 100,delayBeforeStart: 0, direction: 'left',duplicated: true});
-		$('.btn').click(function(){
-			texto = $(this).attr('value');
+		$(document).ready(function() {
 			$.ajax({
-				url: 'txt_estado.php',
+				url: 'txts.php',
 				method: 'GET',
-				data: {
-					'estado': texto
-				},
-				beforeSend: {
-					$('.marquee')
+				success: function(response){
+					console.log(response);
+					$('.alerts').html(response);
+					$('.marquee').marquee({duration:10000, gap: 100,delayBeforeStart: 0, direction: 'left',duplicated: true});
 				}
+			});
+			$('.btn').click(function(event){
+				event.preventDefault(event);
+				texto = $(this).attr('value');
+				$.ajax({
+					url: 'txt_estado.php',
+					method: 'POST',
+					data: {
+						'estado': texto
+					},
+					success: function(response){
+						$('.alerts').html(response);
+						$('.marquee').marquee({duration:10000, gap: 100,delayBeforeStart: 0, direction: 'left',duplicated: true});
+					}
+				});
 			});
 		});
 	</script>
